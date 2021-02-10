@@ -17,9 +17,7 @@ Stats are retrieved from the https://www.worldometers.info/coronavirus/ website 
 
 ## How to Run
 
-After installing the required packages, you can simply run the code as `python wsgi.py` and open the url
-
-[localhost:5000](http://localhost:5000/) in your browser.
+After installing the required packages, you can simply run the code as `python wsgi.py` and open the url [localhost:5000](http://localhost:5000/) in your browser.
 
 Here is the sample screenshot:
 
