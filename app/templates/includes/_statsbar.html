@@ -1,0 +1,90 @@
+<script>
+    var toggle = 0;
+
+    function toggleSideNav() {
+        toggle = 1 - toggle;
+        console.log(toggle);
+        if (toggle == 1) {
+            closeSideNav();
+        } else {
+            openSideNav();
+        }
+    }
+</script>
+
+
+<div class="pos-f-t">
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" onclick="toggleSideNav()" aria-label="Toggle navigation">
+        </button>
+    </nav>
+    <div class="collapse show" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Stats</h4>
+            <hr>
+            <form class="form-check" method="POST" action="{{ url_for('dashboard') }}">
+                <span class="text-muted">Map Type</span>
+                <select name="activeMapType" class="selectpicker form-control" onchange="this.form.submit()">
+                    {% for mapType in mapTypes %}
+                    {% if mapType == session.mapType %}
+                    <option value="{{ mapType }}" selected>{{ mapType }}</option>
+                    {% else %}
+                    <option value="{{ mapType }}">{{ mapType }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </form>
+            <br>
+            <form class="form-check">
+                <span class="text-muted">World Daily Stats - {{ currentDate }}</span>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        New Cases
+                        <span class="badge badge-primary badge-warning">{{dailyStats['NewCases']}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        New Deaths
+                        <span class="badge badge-primary badge-danger">{{dailyStats['NewDeaths']}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        New Recovered
+                        <span class="badge badge-primary badge-success">{{dailyStats['NewRecovered']}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Active Cases
+                        <span class="badge badge-primary badge-info">{{dailyStats['ActiveCases']}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Critical Cases
+                        <span class="badge badge-primary badge-warning">{{dailyStats['Serious,Critical']}}</span>
+                    </li>
+                </ul>
+            </form>
+            <br>
+            <form class="form-check" method="POST" action="{{ url_for('dashboard') }}">
+                <span class="text-muted">Covid Stats</span><br>
+                <select name="activeCovidStats" class="selectpicker form-control" onchange="this.form.submit()">
+                    {% for covidStat in covidStats %}
+                    {% if covidStat == session.activeCovidStats %}
+                    <option value="{{ covidStat }}" selected>{{ covidStat }}</option>
+                    {% else %}
+                    <option value="{{ covidStat }}">{{ covidStat }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </form>
+            <br>
+            <form class="form-check" method="POST" action="{{ url_for('dashboard') }}">
+                <span class="text-muted">Country</span>
+                <select name="activeCountry" class="selectpicker form-control" onchange="this.form.submit()">
+                    {% for country in countries %}
+                    {% if country == session.country %}
+                    <option value="{{ country }}" selected>{{ country }}</option>
+                    {% else %}
+                    <option value="{{ country }}">{{ country }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+    </div>

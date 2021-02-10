@@ -1,0 +1,49 @@
+body 
+{
+    padding-bottom: 50px;
+}
+
+.sidebar {
+    position: absolute;
+    top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.col-sm-1,
+.col-sm-4,
+.col-sm-8,
+.col-sm-11
+{
+    transition: 0.5s;
+}
+
+.container
+{
+    margin-top: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.container-fluid
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+p
+{
+    text-align: justify;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
+}
+
+.zoom:active {
+  -ms-transform: scale(3) translate(-100px, -100px); /* IE 9 */
+  -webkit-transform: scale(3) translate(-100px, -100px); /* Safari 3-8 */
+  transform: scale(3) translate(-100px, -100px);
+}
